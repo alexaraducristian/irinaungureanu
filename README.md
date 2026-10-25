@@ -35,34 +35,26 @@ npm run preview  # previzualizare build
 
 ## Deploy
 
-Site-ul este publicat la **https://alexavolt.ro/irinaungureanu/**, ca parte a
-deploy-ului site-ului principal [`alexaraducristian.github.io`](https://github.com/alexaraducristian/alexaraducristian.github.io),
-care deține domeniul `alexavolt.ro`. Codul rămâne în acest repo separat.
+Site-ul este publicat pe subdomeniul propriu
+**https://psihoterapie.alexavolt.ro/**. Repo-ul se construiește și se publică
+singur pe GitHub Pages, la fel ca `coolpvt.alexavolt.ro`.
 
 Cum funcționează:
 
-- Workflow-ul de deploy al repo-ului principal face checkout la acest repo,
-  îl construiește și îl plasează sub `/irinaungureanu/` în artefactul GitHub Pages.
-- Acest repo **nu se publică singur** (nu are workflow propriu de deploy).
+- La fiecare push pe `main`, workflow-ul `.github/workflows/deploy.yml`
+  construiește site-ul cu acțiunea oficială `withastro/action` și îl publică
+  pe GitHub Pages.
+- Fișierul `public/CNAME` atașează subdomeniul `psihoterapie.alexavolt.ro`
+  acestui repo.
 
-### Cum publici modificările (deploy manual)
+### Configurare (o singură dată)
 
-Acest repo nu declanșează automat deploy-ul. După ce faci push aici, pornește
-manual deploy-ul din repo-ul principal:
+1. **DNS** (la registrarul domeniului `alexavolt.ro`): adaugă un record
+   `CNAME` pentru `psihoterapie` către `alexaraducristian.github.io`.
+2. **GitHub** (acest repo): **Settings → Pages → Source = GitHub Actions**;
+   la **Custom domain** pune `psihoterapie.alexavolt.ro`.
 
-**`alexaraducristian.github.io` → Actions → „Deploy to GitHub Pages” → Run workflow**
+### Dezvoltare locală
 
-Workflow-ul principal preia automat ultima versiune din `main`-ul acestui repo,
-o construiește și o publică sub `/irinaungureanu/`.
-
-> Setări GitHub Pages:
-> - În repo-ul principal: **Settings → Pages → Source = GitHub Actions**, cu
->   domeniul `alexavolt.ro`.
-> - În acest repo (`irinaungureanu`): **Source = GitHub Actions** (fără deploy
->   propriu), ca să nu ruleze Jekyll. Fișierul `.nojekyll` previne oricum rularea
->   Jekyll.
-
-### Dezvoltare locală la subcale
-
-`base` este `/irinaungureanu/`, deci în local site-ul este servit la
-`http://localhost:4321/irinaungureanu/` (nu la rădăcină).
+`base` este `/`, deci în local site-ul este servit la
+`http://localhost:4321/`.

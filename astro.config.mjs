@@ -3,9 +3,9 @@ import tailwindvite from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  // Site-ul este publicat sub subcalea /irinaungureanu/ pe alexavolt.ro
-  site: 'https://alexavolt.ro',
-  base: '/irinaungureanu/',
+  // Site publicat pe subdomeniul propriu psihoterapie.alexavolt.ro
+  site: 'https://psihoterapie.alexavolt.ro',
+  base: '/',
   trailingSlash: 'always',
 
   integrations: [
