@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import ServiceIntro from '../components/ServiceIntro.astro';
+import Faq from '../components/Faq.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+
+const candAjuta = [
+  'ai nevoie de liniște interioară',
+  'vrei să înțelegi ce te blochează',
+  'simți nevoia să înțelegi mai bine ce se întâmplă în interiorul tău',
+  'treci printr-o perioadă dificilă și ai nevoie de sprijin psihologic',
+  'vrei să iei decizii mai aliniate cu valorile tale',
+  'simți că te-ai pierdut pe drum și cauți reconectarea cu tine',
+];
+
+const putemExplora = [
+  'anxietate, atacuri de panică, gânduri intruzive',
+  'depresie, oboseală emoțională',
+  'dificultăți în relații sau în a-ți exprima nevoile',
+  'stimă de sine scăzută, rușine, auto-critică',
+  'traume, pierderi sau separări dureroase',
+  'dificultăți în luarea deciziilor, stres',
+];
+
+const faq = [
+  {
+    q: 'Cum știu dacă am nevoie de terapie individuală?',
+    a: 'Dacă simți că emoțiile tale devin greu de gestionat, dacă treci printr-o perioadă dificilă, dacă ai întrebări despre tine sau despre relațiile tale — terapia poate fi un pas important spre claritate și echilibru.',
+  },
+  {
+    q: 'La ce să mă aștept în prima ședință?',
+    a: 'Prima întâlnire este pentru cunoaștere și orientare. Nu trebuie să știi exact ce să spui sau să povestești tot. E suficient să înțelegem împreună ce te-a adus aici și ce îți dorești de la terapie. Luăm lucrurile pas cu pas.',
+  },
+  {
+    q: 'Cât de des trebuie să vin la terapie?',
+    a: 'Frecvența o stabilim împreună, în funcție de nevoile tale. De obicei, ne vedem o dată pe săptămână.',
+  },
+  {
+    q: 'Cât durează procesul terapeutic?',
+    a: 'Durata diferă de la o persoană la alta. Unele persoane simt o schimbare în câteva luni, altele aleg să lucreze mai profund, pe termen mai lung. Decidem împreună ritmul și direcția.',
+  },
+  {
+    q: 'Este confidențial ce discutăm?',
+    a: 'Absolut. Tot ce împărtășești în terapie este protejat prin confidențialitate profesională.',
+  },
+  {
+    q: 'Trebuie să vorbesc despre lucruri dureroase din trecut?',
+    a: 'Doar dacă simți că este momentul. Lucrăm în ritmul tău, cu respect față de ce ești pregătit(ă) să explorezi.',
+  },
+];
+---
+
+<Layout
+  title="Terapie individuală Iași | Corina Ungureanu — psihoterapeut relațional"
+  description="Spațiu pentru echilibru și vindecare emoțională. Terapie individuală în cabinetul din Iași sau online, fără grabă și fără judecată."
+>
+  <PageHero
+    eyebrow="Terapie individuală · Iași & online"
+    title="Spațiu pentru echilibru și vindecare emoțională"
+    subtitle="Sunt momente în care emoțiile devin greu de gestionat, gândurile sunt copleșitoare și relațiile par tot mai complicate. Aici lucrăm împreună, într-un spațiu cald și confidențial."
+  />
+
+  <section class="px-4 md:px-6 py-16">
+    <div class="max-w-3xl mx-auto reveal">
+      <p class="text-lg text-ink-700 leading-relaxed">
+        Fie că alegi o ședință în cabinetul din Iași sau terapia online — fără
+        grabă, fără judecată. Doar tu, cu ceea ce simți, și un sprijin real care
+        te ajută să te înțelegi mai bine.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-4 md:px-6 pb-8">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+      <ServiceIntro heading="Când te poate ajuta terapia individuală" items={candAjuta} variant="sage" />
+      <ServiceIntro heading="Ce putem explora împreună" items={putemExplora} variant="clay" />
+    </div>
+  </section>
+
+  <section class="px-4 md:px-6 py-10">
+    <div class="max-w-3xl mx-auto reveal">
+      <p class="text-ink-500 leading-relaxed mb-8">
+        Lucrez relațional și emoțional, cu atenție la nevoia de conectare,
+        siguranță și autenticitate. Abordarea mea include și vindecarea
+        transgenerațională, pentru că multe dintre dificultățile noastre își au
+        rădăcina în felul în care am învățat să iubim și să fim iubiți.
+      </p>
+      <div class="bg-sage-600 text-sand-50 rounded-3xl p-8 text-center">
+        <p class="text-sm uppercase tracking-[0.18em] text-sage-200 mb-2">
+          Cum decurge o ședință
+        </p>
+        <p class="font-serif text-2xl md:text-3xl">
+          50 de minute · 200 lei
+        </p>
+        <p class="mt-3 text-sage-100">
+          La cabinet (Iași) sau online, în funcție de ce îți este mai potrivit.
+          De obicei, o dată pe săptămână.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 md:px-6 pb-4">
+    <div class="max-w-2xl mx-auto bg-sand-100 border border-sand-200 rounded-3xl p-8 reveal">
+      <p class="font-serif text-lg md:text-xl text-sage-700 italic leading-relaxed">
+        „Ședințele se desfășoară într-o atmosferă caldă și plină de blândețe.
+        M-am simțit acceptată, ascultată și înțeleasă, iar acest lucru m-a
+        ajutat să mă descopăr și să mă uit cu mai multă claritate la mine.”
+      </p>
+      <p class="mt-4 text-ink-500 text-sm">— Clientă în procesul de terapie individuală</p>
+    </div>
+  </section>
+
+  <Faq title="Întrebări frecvente despre terapia individuală" items={faq} />
+
+  <CtaBanner />
+</Layout>

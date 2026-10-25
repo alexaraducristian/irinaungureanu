@@ -1,0 +1,40 @@
+---
+import { site } from '../data/site';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+interface Props {
+  title?: string;
+  text?: string;
+}
+const {
+  title = 'Programează o ședință',
+  text = 'Dacă simți că e momentul potrivit să începi, te invit să îmi scrii. Vom găsi împreună ritmul și timpul potrivit pentru tine.',
+} = Astro.props;
+---
+
+<section class="px-4 md:px-6 py-16">
+  <div
+    class="max-w-4xl mx-auto bg-sage-600 text-sand-50 rounded-3xl px-8 py-12 md:px-14 md:py-14 text-center shadow-xl shadow-sage-900/10 reveal"
+  >
+    <h2 class="font-serif text-3xl md:text-4xl mb-4">{title}</h2>
+    <p class="text-sage-100 text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+      {text}
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a
+        href={`${base}/contact/`}
+        class="inline-flex items-center justify-center gap-2 bg-sand-50 text-sage-800 px-7 py-3.5 rounded-full font-bold hover:bg-white transition-colors shadow"
+      >
+        Contactează-mă
+      </a>
+      <a
+        href={`https://wa.me/${site.whatsapp}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 bg-wa hover:bg-wa-dark text-white px-7 py-3.5 rounded-full font-bold transition-colors"
+      >
+        💬 Scrie pe WhatsApp
+      </a>
+    </div>
+  </div>
+</section>

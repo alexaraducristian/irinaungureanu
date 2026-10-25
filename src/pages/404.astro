@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title="Pagină negăsită | Corina Ungureanu" noindex={true}>
+  <section class="px-4 md:px-6 py-28 text-center">
+    <p class="font-serif text-7xl md:text-8xl text-sage-300 mb-4">404</p>
+    <h1 class="font-serif text-3xl md:text-4xl text-sage-800 mb-4">
+      Pagina pe care o cauți nu există
+    </h1>
+    <p class="text-ink-500 max-w-md mx-auto mb-8">
+      Poate a fost mutată sau linkul nu mai este valabil. Hai să te întorci
+      într-un loc familiar.
+    </p>
+    <a
+      href={`${base}/`}
+      class="inline-flex items-center gap-2 bg-sage-600 hover:bg-sage-700 text-white px-7 py-3.5 rounded-full font-bold transition-colors shadow"
+    >
+      Înapoi acasă
+    </a>
+  </section>
+</Layout>

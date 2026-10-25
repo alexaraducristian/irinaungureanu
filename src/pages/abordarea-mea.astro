@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+
+const inTerapie = [
+  'Te susțin să înțelegi cum funcționezi emoțional și relațional',
+  'Explorăm împreună blocajele, fricile și nevoile tale reale',
+  'Ne uităm la resursele tale interioare și cum pot fi activate',
+  'Privim dificultățile nu ca defecte, ci ca semnale care merită ascultate',
+];
+
+const explorare = [
+  'emoțiile tale, pentru a le înțelege și exprima mai clar',
+  'relațiile importante din viața ta — cum te raportezi, ce tipare se repetă',
+  'părțile din tine care se simt rănite, blocate sau nesigure',
+  'trecutul tău, dacă simți că acolo sunt rădăcini ale durerii de azi',
+  'corpul și semnalele lui, acolo unde simți tensiuni sau neliniște',
+  'visuri, imagini interioare sau momente care te ating profund',
+];
+
+const cadru = [
+  'Ședințele durează 50 de minute (individual) sau 90 de minute (cuplu/familie)',
+  'Ne putem întâlni în cabinetul din Iași sau online',
+  'Frecvența recomandată este săptămânală, dar o stabilim împreună în funcție de ritmul tău',
+  'Tot ce discutăm rămâne strict confidențial — cadrul etic este esențial pentru o relație de încredere',
+];
+---
+
+<Layout
+  title="Abordarea mea | Psihoterapeut Corina Ungureanu — Iași & online"
+  description="O abordare sistemică, umanistă și centrată pe atașament și relație. Un spațiu de siguranță, empatie și respect, personalizat pentru ceea ce ai nevoie."
+>
+  <PageHero
+    eyebrow="Abordarea mea"
+    title="Un spațiu personalizat, centrat pe tine"
+    subtitle="Fiecare persoană vine în terapie cu o poveste unică. De aceea, modul meu de lucru este centrat pe tine și pe ceea ce ai nevoie în acel moment din viața ta."
+  />
+
+  <section class="px-4 md:px-6 py-16">
+    <div class="max-w-3xl mx-auto reveal">
+      <p class="text-lg text-ink-700 leading-relaxed mb-6">
+        Cred într-o relație terapeutică bazată pe siguranță, empatie și respect.
+        Creez un spațiu în care poți explora, fără grabă și fără judecată, ce
+        simți, ce te doare și ce îți dorești să schimbi.
+      </p>
+      <p class="text-ink-500 leading-relaxed">
+        Folosesc o abordare sistemică, influențată de perspectiva umanistă,
+        experiențială și centrată pe atașament și relație. În funcție de ce îți
+        este util, lucrăm atât cu prezentul tău emoțional, cât și cu rădăcinile
+        profunde ale tiparelor care se repetă în viața ta.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-4 md:px-6 pb-8">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+      <div class="bg-sage-50 border border-sage-100 rounded-3xl p-8 reveal">
+        <h2 class="font-serif text-2xl text-sage-800 mb-5">În terapie</h2>
+        <ul class="space-y-3">
+          {
+            inTerapie.map((t) => (
+              <li class="flex items-start gap-3 text-ink-700">
+                <span class="mt-1 w-5 h-5 rounded-full bg-sage-100 text-sage-600 flex items-center justify-center text-xs flex-shrink-0">
+                  ✓
+                </span>
+                <span>{t}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="bg-clay-50 border border-clay-100 rounded-3xl p-8 reveal">
+        <h2 class="font-serif text-2xl text-sage-800 mb-5">
+          Ce putem explora împreună
+        </h2>
+        <ul class="space-y-3">
+          {
+            explorare.map((t) => (
+              <li class="flex items-start gap-3 text-ink-700">
+                <span class="mt-1.5 w-2 h-2 rounded-full bg-clay-400 flex-shrink-0" />
+                <span>{t}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 md:px-6 py-12">
+    <div class="max-w-3xl mx-auto bg-sand-100 border border-sand-200 rounded-3xl p-8 md:p-10 reveal">
+      <p class="font-serif text-xl md:text-2xl text-sage-700 leading-relaxed italic text-center">
+        Cred că vindecarea începe într-un spațiu de siguranță, în care poți fi
+        ascultat cu blândețe, fără grabă și fără judecată. În acest cadru, poți
+        învăța să te asculți pe tine — cu mai multă înțelegere, compasiune și
+        curaj.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-4 md:px-6 pb-16">
+    <div class="max-w-3xl mx-auto reveal">
+      <h2 class="font-serif text-2xl text-sage-800 mb-5">Cadru și durată</h2>
+      <ul class="space-y-3">
+        {
+          cadru.map((c) => (
+            <li class="flex items-start gap-3 text-ink-700">
+              <span class="mt-1.5 w-2 h-2 rounded-full bg-sage-400 flex-shrink-0" />
+              <span>{c}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-6 text-ink-500 leading-relaxed">
+        Procesul e orientat spre claritate, echilibru și schimbare reală. Nu
+        lucrăm pentru perfecțiune, ci pentru o relație mai autentică cu tine și
+        cu cei din jurul tău.
+      </p>
+    </div>
+  </section>
+
+  <CtaBanner />
+</Layout>

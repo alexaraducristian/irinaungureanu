@@ -1,0 +1,101 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { posts, formatDate } from '../../data/posts';
+
+export function getStaticPaths() {
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const related = posts
+  .filter((p) => p.slug !== post.slug && p.category === post.category)
+  .slice(0, 2);
+const fallback = posts.filter((p) => p.slug !== post.slug).slice(0, 2);
+const suggestions = related.length ? related : fallback;
+---
+
+<Layout title={`${post.title} | Blog Corina Ungureanu`} description={post.excerpt}>
+  <article>
+    <div class="bg-sand-100 border-b border-sand-200">
+      <div class="max-w-3xl mx-auto px-4 md:px-6 pt-12 pb-10">
+        <a
+          href={`${base}/blog/`}
+          class="inline-flex items-center gap-1 text-sage-600 text-sm font-semibold hover:gap-2 transition-all mb-6"
+        >
+          ← Înapoi la blog
+        </a>
+        <div class="flex items-center gap-2 text-xs text-ink-500 mb-4">
+          <span class="bg-sage-100 text-sage-700 px-2.5 py-1 rounded-full font-semibold">
+            {post.category}
+          </span>
+          <span>{formatDate(post.date)}</span>
+        </div>
+        <h1 class="font-serif text-3xl md:text-5xl text-sage-800 leading-tight">
+          {post.title}
+        </h1>
+      </div>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-4 md:px-6 -mt-2">
+      <div class="rounded-3xl overflow-hidden my-10 shadow-lg shadow-sage-900/5">
+        <Image
+          src={post.cover}
+          alt={post.title}
+          width={1000}
+          height={600}
+          class="w-full h-auto object-cover"
+        />
+      </div>
+
+      <div class="prose-custom space-y-6 pb-8">
+        <p class="font-serif text-xl text-sage-700 italic leading-relaxed">
+          {post.excerpt}
+        </p>
+        {post.body.map((p) => <p class="text-ink-700 leading-relaxed text-lg">{p}</p>)}
+      </div>
+    </div>
+
+    {
+      suggestions.length > 0 && (
+        <section class="px-4 md:px-6 py-12 border-t border-sand-200 mt-8">
+          <div class="max-w-5xl mx-auto">
+            <h2 class="font-serif text-2xl text-sage-800 mb-6">Citește și</h2>
+            <div class="grid sm:grid-cols-2 gap-6">
+              {suggestions.map((p) => (
+                <a
+                  href={`${base}/blog/${p.slug}/`}
+                  class="group bg-sand-50 border border-sand-200 rounded-3xl overflow-hidden hover:shadow-lg transition-all flex"
+                >
+                  <div class="w-28 flex-shrink-0 overflow-hidden">
+                    <Image
+                      src={p.cover}
+                      alt={p.title}
+                      width={200}
+                      height={200}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div class="p-4">
+                    <span class="text-xs text-sage-600 font-semibold">{p.category}</span>
+                    <h3 class="font-serif text-base text-sage-800 leading-snug mt-1 group-hover:text-sage-600 transition-colors">
+                      {p.title}
+                    </h3>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+  </article>
+
+  <CtaBanner />
+</Layout>

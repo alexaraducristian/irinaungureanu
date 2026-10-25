@@ -1,0 +1,204 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { site } from '../data/site';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const servicii = [
+  {
+    title: 'Terapie individuală',
+    text: 'Un spațiu pentru echilibru și vindecare emoțională. Fără grabă, fără judecată — doar tu și un sprijin real.',
+    href: `${base}/terapie-individuala/`,
+    icon: '🌿',
+  },
+  {
+    title: 'Terapie de cuplu',
+    text: 'Un proces de reconectare emoțională, în care învățați din nou cum să fiți în siguranță împreună.',
+    href: `${base}/terapie-de-cuplu/`,
+    icon: '🤝',
+  },
+  {
+    title: 'Terapie de familie',
+    text: 'Sprijin pentru tensiuni între generații și relații în familie, cu blândețe și înțelegere.',
+    href: `${base}/terapie-de-familie/`,
+    icon: '🏡',
+  },
+  {
+    title: 'Terapie online',
+    text: 'Același spațiu de încredere și prezență, oriunde te-ai afla — printr-o conexiune video sigură.',
+    href: `${base}/terapie-online/`,
+    icon: '💻',
+  },
+];
+
+const teme = [
+  'anxietate, atacuri de panică, stres emoțional',
+  'depresie, epuizare sau pierderi dificile',
+  'tranziții importante de viață (divorț, doliu, schimbări personale sau profesionale)',
+  'dificultăți în cuplu (comunicare, conflicte, infidelitate, distanțare emoțională)',
+  'tensiuni în familie și relații între generații',
+];
+---
+
+<Layout
+  title="Psihoterapeut Corina Ungureanu | Iași & online"
+  description="Corina Ungureanu — psihoterapeut relațional în Iași și online. Terapie individuală, de cuplu și de familie, într-un spațiu cald, sigur și fără judecată."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-sand-100">
+    <div
+      class="absolute -top-32 -right-28 w-96 h-96 rounded-full bg-sage-200 blur-3xl opacity-50"
+    >
+    </div>
+    <div
+      class="absolute top-40 -left-24 w-80 h-80 rounded-full bg-clay-100 blur-3xl opacity-50"
+    >
+    </div>
+    <div
+      class="relative max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28 text-center"
+    >
+      <p class="text-sage-600 uppercase tracking-[0.22em] text-xs font-bold mb-5">
+        Psihoterapeut relațional · Iași & online
+      </p>
+      <h1
+        class="font-serif text-4xl md:text-6xl text-sage-800 leading-[1.1] max-w-3xl mx-auto"
+      >
+        Să cauți ajutor poate fi primul pas spre a redeveni tu însuți.
+      </h1>
+      <p
+        class="mt-7 text-lg md:text-xl text-ink-500 leading-relaxed max-w-2xl mx-auto"
+      >
+        Poate fi începutul unei relații mai blânde și mai conștiente cu tine și
+        cu ceilalți. Cred că o parte din noi știe deja drumul spre vindecare —
+        are doar nevoie de un mediu care să o permită.
+      </p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href={`${base}/contact/`}
+          class="inline-flex items-center justify-center gap-2 bg-clay-500 hover:bg-clay-600 text-white px-8 py-4 rounded-full font-bold transition-colors shadow-lg shadow-clay-500/20"
+        >
+          Programează o ședință
+        </a>
+        <a
+          href={`${base}/abordarea-mea/`}
+          class="inline-flex items-center justify-center gap-2 bg-white text-sage-800 px-8 py-4 rounded-full font-bold hover:bg-sage-50 transition-colors border border-sand-200"
+        >
+          Despre abordarea mea
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO / cu ce lucrez -->
+  <section class="px-4 md:px-6 py-20">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <h2 class="font-serif text-3xl md:text-4xl text-sage-800 mb-5">
+          Lucrez cu persoane care se confruntă cu:
+        </h2>
+        <p class="text-ink-500 leading-relaxed mb-6">
+          Pe măsură ce ne schimbăm, viața însăși se schimbă. Împreună creăm un
+          spațiu sigur în care emoțiile tale pot fi ascultate și înțelese.
+        </p>
+        <ul class="space-y-3">
+          {
+            teme.map((t) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-1 w-5 h-5 rounded-full bg-sage-100 text-sage-600 flex items-center justify-center text-xs flex-shrink-0">
+                  ✓
+                </span>
+                <span class="text-ink-700">{t}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="reveal">
+        <blockquote
+          class="bg-sage-50 border border-sage-100 rounded-3xl p-8 md:p-10 relative"
+        >
+          <span class="font-serif text-6xl text-sage-200 absolute top-3 left-5"
+            >“</span
+          >
+          <p
+            class="relative font-serif text-xl md:text-2xl text-sage-700 leading-relaxed italic"
+          >
+            Dacă simți că ai nevoie de sprijin — fie în cuplu, fie în familie,
+            fie în relația cu tine însuți — te invit să mă contactezi pentru o
+            primă întâlnire.
+          </p>
+          <footer class="mt-6 text-ink-500 not-italic">
+            — {site.name}, {site.role}
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICII -->
+  <section class="px-4 md:px-6 py-10 bg-sand-100/60">
+    <div class="max-w-6xl mx-auto py-10">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <p class="text-sage-600 uppercase tracking-[0.2em] text-xs font-bold mb-3">
+          Servicii oferite
+        </p>
+        <h2 class="font-serif text-3xl md:text-4xl text-sage-800">
+          Cum putem lucra împreună
+        </h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {
+          servicii.map((s) => (
+            <a
+              href={s.href}
+              class="group bg-sand-50 border border-sand-200 rounded-3xl p-7 hover:shadow-xl hover:shadow-sage-900/5 hover:-translate-y-1 transition-all duration-300 reveal flex flex-col"
+            >
+              <span class="text-3xl mb-4">{s.icon}</span>
+              <h3 class="font-serif text-xl text-sage-800 mb-2">{s.title}</h3>
+              <p class="text-sm text-ink-500 leading-relaxed flex-1">{s.text}</p>
+              <span class="mt-5 text-sage-600 font-semibold text-sm group-hover:gap-2 inline-flex items-center gap-1 transition-all">
+                Află mai mult →
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORI -->
+  <section class="px-4 md:px-6 py-20">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+      {
+        [
+          {
+            t: 'Siguranță',
+            d: 'Un spațiu fără grabă și fără judecată, în care poți explora ce simți și ce îți dorești să schimbi.',
+          },
+          {
+            t: 'Conectare',
+            d: 'Lucru relațional și emoțional, cu atenție la nevoia de apropiere, prezență și autenticitate.',
+          },
+          {
+            t: 'Vindecare',
+            d: 'Privim dificultățile nu ca defecte, ci ca semnale care merită ascultate cu blândețe.',
+          },
+        ].map((v) => (
+          <div class="text-center reveal">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-clay-50 text-clay-500 flex items-center justify-center font-serif text-2xl mb-4">
+              ✦
+            </div>
+            <h3 class="font-serif text-2xl text-sage-800 mb-2">{v.t}</h3>
+            <p class="text-ink-500 leading-relaxed">{v.d}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <CtaBanner
+    title="Aștept cu drag să ne cunoaștem"
+    text="Fie că alegi o ședință în cabinetul din Iași sau online, primul pas este o conversație. Scrie-mi și găsim împreună momentul potrivit."
+  />
+</Layout>

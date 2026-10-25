@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+
+const formare = [
+  'Licențiată în Filosofie — Universitatea „Al. I. Cuza”, Iași',
+  'Studii complementare în Psihologie — Universitatea „Al. I. Cuza”, Iași',
+  'Formare în Psihoterapie Sistemică de Cuplu și Familie — Human Center, Iași',
+  'Curs de specializare în Psihoterapia Traumei — evaluare și intervenție',
+  'Facilitator instrument transgenerațional „Rădăcini Puternice”',
+  'Formare în curs în Terapia Centrată pe Emoții (EFT)',
+];
+
+const arii = [
+  'Depresie',
+  'Anxietate și fobii',
+  'Dificultăți relaționale',
+  'Perioade de schimbare în viață',
+  'Dificultăți cu stima de sine',
+  'Gestionarea emoțiilor dificile',
+  'Gestionarea stresului',
+  'Pierderi sau singurătate',
+  'Gestionarea carierei',
+  'Stabilirea și atingerea obiectivelor',
+  'Consiliere LGBTQ+',
+  'Condiții medicale dificile',
+];
+---
+
+<Layout
+  title="Despre mine | Psihoterapeut Corina Ungureanu — Iași & online"
+  description="Psihoterapeut atestat de Colegiul Psihologilor din România. Terapie individuală și de cuplu, cu o abordare relațională și emoțională, în Iași și online."
+>
+  <PageHero
+    eyebrow="Despre mine"
+    title="Corina Ungureanu"
+    subtitle="Sunt psihoterapeut atestat și ofer terapie individuală și de cuplu, în cabinetul meu din Iași și online — cu o abordare relațională și emoțională, orientată spre conectare, siguranță și autenticitate."
+  />
+
+  <section class="px-4 md:px-6 py-16">
+    <div class="max-w-3xl mx-auto prose-custom reveal">
+      <p class="text-lg text-ink-700 leading-relaxed mb-6">
+        Am descoperit psihoterapia prin propria mea călătorie interioară. Lucrul
+        personal în terapie m-a ajutat să mă cunosc mai bine și mi-a trezit
+        pasiunea pentru această profesie. Sunt pasionată să înțeleg cum putem
+        face schimbări care durează, cred în potențialul nostru de vindecare și
+        în a duce vieți cu sens, și îmi place să fiu la curent cu informații cât
+        mai actuale privind teoria atașamentului, trauma și neurobiologia
+        emoțiilor.
+      </p>
+
+      <h2 class="font-serif text-2xl text-sage-800 mt-10 mb-4">Experiență</h2>
+      <p class="text-ink-500 leading-relaxed">
+        Experiența mea clinică include lucrul cu adulți și cupluri în sesiuni
+        individuale și de cuplu, atât în cabinet, cât și online. Am însoțit
+        clienți care s-au confruntat cu anxietate, depresie, doliu, pierdere,
+        stres, blocaje emoționale, dificultăți în relații, distanțare
+        emoțională, conflicte, infidelitate și tipare care se repetă. Lucrez cu
+        oameni care vor să își înțeleagă emoțiile, relațiile și propria istorie
+        de atașament, pentru a-și recupera vocea și sentimentul de sine.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-4 md:px-6 pb-16">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+      <div class="bg-sage-50 border border-sage-100 rounded-3xl p-8 reveal">
+        <h2 class="font-serif text-2xl text-sage-800 mb-5">
+          Formare profesională și studii
+        </h2>
+        <ul class="space-y-3">
+          {
+            formare.map((f) => (
+              <li class="flex items-start gap-3 text-ink-700">
+                <span class="mt-1.5 w-2 h-2 rounded-full bg-sage-400 flex-shrink-0" />
+                <span>{f}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="mt-6 pt-6 border-t border-sage-100">
+          <p class="text-sm text-ink-500">
+            <strong class="text-sage-700">Atestat profesional:</strong> Atestată
+            de Colegiul Psihologilor din România · Cod unic în Registrul Unic al
+            Psihologilor: 31423
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-sand-100 border border-sand-200 rounded-3xl p-8 reveal">
+        <h2 class="font-serif text-2xl text-sage-800 mb-5">
+          Arii în care te pot sprijini
+        </h2>
+        <div class="flex flex-wrap gap-2">
+          {
+            arii.map((a) => (
+              <span class="bg-sand-50 border border-sand-200 text-ink-700 text-sm px-3 py-1.5 rounded-full">
+                {a}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</Layout>

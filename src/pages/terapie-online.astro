@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import ServiceIntro from '../components/ServiceIntro.astro';
+import Faq from '../components/Faq.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+
+const candPotrivita = [
+  'locuiești în alt oraș sau în afara țării',
+  'ai un program încărcat și vrei flexibilitate',
+  'te simți mai confortabil în propriul spațiu',
+  'ești într-o perioadă de tranziție (schimbare de job, relocare, separare)',
+  'vrei continuitate în procesul tău de terapie, chiar și la distanță',
+];
+
+const teme = [
+  'anxietate, atacuri de panică, stres emoțional',
+  'depresie, epuizare, nesiguranță de sine',
+  'dificultăți în relații sau în comunicare',
+  'pierderi, doliu, despărțiri',
+  'blocaje emoționale și tipare care se repetă',
+];
+
+const faq = [
+  {
+    q: 'Este la fel de eficientă ca terapia în cabinet?',
+    a: 'Da. Relația terapeutică se construiește la fel de autentic și în mediul online. Mulți clienți spun că se simt mai relaxați și pot vorbi mai deschis din propriul spațiu.',
+  },
+  {
+    q: 'Ce am nevoie pentru ședințele online?',
+    a: 'O conexiune stabilă la internet, o cameră video și un loc liniștit în care să te simți în siguranță.',
+  },
+  {
+    q: 'Pot alterna ședințele online cu cele în cabinet?',
+    a: 'Da, desigur. Poți alege forma de întâlnire care se potrivește cel mai bine cu programul și nevoile tale.',
+  },
+];
+---
+
+<Layout
+  title="Terapie online | Psihoterapeut relațional Corina Ungureanu"
+  description="Sprijin emoțional oriunde te-ai afla. Terapie online la fel de profundă și eficientă, printr-o conexiune video sigură."
+>
+  <PageHero
+    eyebrow="Terapie online"
+    title="Sprijin emoțional oriunde te-ai afla"
+    subtitle="Uneori, distanța, programul încărcat sau schimbările din viață fac dificilă ajungerea la cabinet. Terapia online îți oferă același spațiu de încredere și prezență."
+  />
+
+  <section class="px-4 md:px-6 py-16">
+    <div class="max-w-3xl mx-auto reveal">
+      <p class="text-lg text-ink-700 leading-relaxed">
+        Este potrivită dacă simți nevoia de claritate, echilibru emoțional sau
+        vindecare relațională, dar vrei să lucrezi dintr-un loc familiar ție —
+        acasă, în siguranță.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-4 md:px-6 pb-8">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+      <ServiceIntro heading="Terapia online poate fi potrivită dacă" items={candPotrivita} variant="sage" />
+      <ServiceIntro heading="Teme pe care le putem lucra online" items={teme} variant="clay" />
+    </div>
+  </section>
+
+  <section class="px-4 md:px-6 py-10">
+    <div class="max-w-3xl mx-auto reveal">
+      <h2 class="font-serif text-2xl text-sage-800 mb-4">Cum funcționează</h2>
+      <p class="text-ink-500 leading-relaxed mb-8">
+        Ședințele se desfășoară printr-o platformă video (WhatsApp Video),
+        într-un spațiu confidențial și protejat. Tot ceea ce este împărtășit
+        rămâne strict între noi, la fel ca în cabinet.
+      </p>
+      <div class="bg-sage-600 text-sand-50 rounded-3xl p-8 text-center">
+        <p class="text-sm uppercase tracking-[0.18em] text-sage-200 mb-2">
+          O ședință
+        </p>
+        <p class="font-serif text-2xl md:text-3xl">50 de minute · 200 lei</p>
+        <p class="mt-3 text-sage-100">
+          Plata se face prin transfer bancar înainte de întâlnire, iar linkul de
+          conectare îl primești în ziua programării.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq title="Întrebări frecvente despre terapia online" items={faq} />
+
+  <CtaBanner
+    title="Programează o ședință online"
+    text="Dacă simți că este momentul potrivit să începi un proces de terapie online, te invit să mă contactezi."
+  />
+</Layout>

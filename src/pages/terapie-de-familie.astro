@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import ServiceIntro from '../components/ServiceIntro.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+
+const candAjuta = [
+  'tensiuni și conflicte repetate între membrii familiei',
+  'dificultăți de comunicare între generații',
+  'perioade de schimbare (divorț, doliu, relocare, un copil care pleacă de acasă)',
+  'tipare relaționale care se transmit și se repetă în familie',
+  'nevoia de a reconstrui apropierea și încrederea între voi',
+];
+
+const beneficii = [
+  'un cadru sigur, în care fiecare voce este ascultată fără judecată',
+  'înțelegerea nevoilor și emoțiilor din spatele conflictelor',
+  'moduri mai sănătoase de a comunica și de a vă susține reciproc',
+  'repararea legăturilor afectate și refacerea sentimentului de apartenență',
+];
+---
+
+<Layout
+  title="Terapie de familie | Psihoterapeut Corina Ungureanu — Iași & online"
+  description="Sprijin pentru familii care trec prin tensiuni, conflicte sau schimbări. Terapie de familie cu blândețe și înțelegere, în Iași sau online."
+>
+  <PageHero
+    eyebrow="Terapie de familie · Iași & online"
+    title="Legături mai blânde și mai sănătoase în familie"
+    subtitle="Familia este primul loc în care învățăm cum să iubim, să ne exprimăm și să ne raportăm la ceilalți. Când apar tensiuni sau distanțe, terapia poate fi un spațiu de reconectare."
+  />
+
+  <section class="px-4 md:px-6 py-16">
+    <div class="max-w-3xl mx-auto reveal">
+      <p class="text-lg text-ink-700 leading-relaxed mb-6">
+        Lucrez dintr-o perspectivă sistemică și relațională, privind familia ca
+        pe un întreg viu, în care fiecare membru își are locul, nevoile și vocea
+        lui. Nu căutăm vinovați, ci înțelegem împreună ce se întâmplă între voi
+        și cum puteți merge mai departe cu mai multă apropiere.
+      </p>
+      <p class="text-ink-500 leading-relaxed">
+        Abordarea mea include și lucrul transgenerațional, pentru că multe dintre
+        tiparele care se repetă își au rădăcina în felul în care am învățat, de-a
+        lungul generațiilor, să ne legăm și să ne purtăm de grijă.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-4 md:px-6 pb-8">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+      <ServiceIntro heading="Când poate ajuta terapia de familie" items={candAjuta} variant="sage" />
+      <ServiceIntro heading="Ce putem construi împreună" items={beneficii} variant="clay" />
+    </div>
+  </section>
+
+  <section class="px-4 md:px-6 py-10">
+    <div class="max-w-3xl mx-auto reveal">
+      <div class="bg-sage-600 text-sand-50 rounded-3xl p-8 text-center">
+        <p class="text-sm uppercase tracking-[0.18em] text-sage-200 mb-2">
+          Cadru
+        </p>
+        <p class="font-serif text-2xl md:text-3xl">90 de minute</p>
+        <p class="mt-3 text-sage-100">
+          În cabinetul din Iași sau online. Frecvența și ritmul le stabilim
+          împreună, în funcție de ce aveți nevoie.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner
+    title="Hai să lucrăm împreună"
+    text="Dacă simțiți că familia voastră are nevoie de un spațiu sigur pentru a se reconecta, vă invit să mă contactați pentru o primă întâlnire."
+  />
+</Layout>

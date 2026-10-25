@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../data/site';
+---
+
+<Layout
+  title="Contact | Psihoterapeut Corina Ungureanu — Iași & online"
+  description="Programează o ședință de psihoterapie în Iași sau online. Contactează-mă prin telefon, WhatsApp sau email."
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Aștept cu drag să ne cunoaștem"
+    subtitle="Dacă simți că e momentul potrivit să începi, scrie-mi. Vom găsi împreună ritmul și timpul potrivit pentru tine."
+  />
+
+  <section class="px-4 md:px-6 py-16">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
+      <!-- Date de contact -->
+      <div class="reveal">
+        <h2 class="font-serif text-2xl text-sage-800 mb-6">Cum mă poți contacta</h2>
+        <ul class="space-y-4">
+          <li>
+            <a
+              href={`tel:${site.phone}`}
+              class="flex items-center gap-4 bg-sand-50 border border-sand-200 rounded-2xl p-5 hover:border-sage-300 transition-colors"
+            >
+              <span class="w-11 h-11 rounded-full bg-sage-100 text-sage-600 flex items-center justify-center text-xl">📞</span>
+              <span>
+                <span class="block text-xs uppercase tracking-[0.14em] text-ink-500">Telefon</span>
+                <span class="block font-semibold text-sage-800">{site.phoneDisplay}</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={`https://wa.me/${site.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-4 bg-sand-50 border border-sand-200 rounded-2xl p-5 hover:border-sage-300 transition-colors"
+            >
+              <span class="w-11 h-11 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl">💬</span>
+              <span>
+                <span class="block text-xs uppercase tracking-[0.14em] text-ink-500">WhatsApp</span>
+                <span class="block font-semibold text-sage-800">Scrie-mi un mesaj</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={`mailto:${site.email}`}
+              class="flex items-center gap-4 bg-sand-50 border border-sand-200 rounded-2xl p-5 hover:border-sage-300 transition-colors"
+            >
+              <span class="w-11 h-11 rounded-full bg-clay-50 text-clay-500 flex items-center justify-center text-xl">✉️</span>
+              <span>
+                <span class="block text-xs uppercase tracking-[0.14em] text-ink-500">Email</span>
+                <span class="block font-semibold text-sage-800 break-all">{site.email}</span>
+              </span>
+            </a>
+          </li>
+          <li class="flex items-center gap-4 bg-sand-50 border border-sand-200 rounded-2xl p-5">
+            <span class="w-11 h-11 rounded-full bg-sand-200 text-sage-700 flex items-center justify-center text-xl">📍</span>
+            <span>
+              <span class="block text-xs uppercase tracking-[0.14em] text-ink-500">Cabinet</span>
+              <span class="block font-semibold text-sage-800">{site.location} · și online</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Formular (mailto) -->
+      <div class="reveal">
+        <div class="bg-sage-50 border border-sage-100 rounded-3xl p-8">
+          <h2 class="font-serif text-2xl text-sage-800 mb-2">Scrie-mi câteva rânduri</h2>
+          <p class="text-sm text-ink-500 mb-6">
+            Completează formularul și îți voi răspunde cât de curând. Nimic din
+            ce îmi scrii nu te obligă la ceva — este doar un prim pas.
+          </p>
+          <form
+            action={`mailto:${site.email}`}
+            method="post"
+            enctype="text/plain"
+            class="space-y-4"
+          >
+            <div>
+              <label for="nume" class="block text-sm font-semibold text-sage-800 mb-1">Nume</label>
+              <input
+                id="nume"
+                name="nume"
+                type="text"
+                required
+                class="w-full rounded-xl border border-sand-200 bg-white px-4 py-3 text-ink-700 focus:outline-none focus:border-sage-400 focus:ring-2 focus:ring-sage-100"
+              />
+            </div>
+            <div>
+              <label for="contact" class="block text-sm font-semibold text-sage-800 mb-1">Email sau telefon</label>
+              <input
+                id="contact"
+                name="contact"
+                type="text"
+                required
+                class="w-full rounded-xl border border-sand-200 bg-white px-4 py-3 text-ink-700 focus:outline-none focus:border-sage-400 focus:ring-2 focus:ring-sage-100"
+              />
+            </div>
+            <div>
+              <label for="mesaj" class="block text-sm font-semibold text-sage-800 mb-1">Mesaj</label>
+              <textarea
+                id="mesaj"
+                name="mesaj"
+                rows="4"
+                class="w-full rounded-xl border border-sand-200 bg-white px-4 py-3 text-ink-700 focus:outline-none focus:border-sage-400 focus:ring-2 focus:ring-sage-100"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-clay-500 hover:bg-clay-600 text-white px-6 py-3.5 rounded-full font-bold transition-colors shadow"
+            >
+              Trimite mesajul
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

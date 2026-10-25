@@ -1,0 +1,78 @@
+---
+import { site, nav } from '../data/site';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const servicii = nav.links.find((l) => (l as any).children) as any;
+---
+
+<footer class="bg-sage-800 text-sage-100 mt-24">
+  <div class="max-w-6xl mx-auto px-6 py-14">
+    <div class="grid md:grid-cols-3 gap-10 mb-10">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span
+            class="w-10 h-10 rounded-full bg-sage-600 text-sand-50 flex items-center justify-center font-serif text-lg"
+            >CU</span
+          >
+          <span class="font-serif text-xl text-sand-50">{site.name}</span>
+        </div>
+        <p class="text-sm leading-relaxed text-sage-200">
+          {site.role}. Un spațiu cald și sigur pentru vindecare emoțională,
+          conectare și autenticitate — în cabinetul din Iași sau online.
+        </p>
+        <p class="text-sm mt-4 text-sage-200">📍 {site.location}</p>
+      </div>
+
+      <div>
+        <h3 class="text-sand-50 font-semibold text-base mb-4 font-serif">
+          Servicii
+        </h3>
+        <ul class="space-y-2 text-sm">
+          {
+            servicii.children.map((c: { text: string; href: string }) => (
+              <li>
+                <a href={c.href} class="hover:text-white transition-colors">
+                  {c.text}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-sand-50 font-semibold text-base mb-4 font-serif">
+          Contact
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            📞 <a href={`tel:${site.phone}`} class="hover:text-white transition-colors"
+              >{site.phoneDisplay}</a
+            >
+          </li>
+          <li>
+            ✉️ <a href={`mailto:${site.email}`} class="hover:text-white transition-colors"
+              >{site.email}</a
+            >
+          </li>
+          <li>
+            <a href={`${base}/blog/`} class="hover:text-white transition-colors"
+              >Blog & resurse</a
+            >
+          </li>
+          <li>
+            <a href={`${base}/contact/`} class="hover:text-white transition-colors"
+              >Programează o ședință</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="border-t border-sage-700 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-sage-300"
+    >
+      <p>© {new Date().getFullYear()} {site.name} — Psihoterapeut. Toate drepturile rezervate.</p>
+      <p>{site.reg}</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,34 @@
+---
+// Blocuri reutilizabile pentru paginile de servicii.
+interface Props {
+  heading: string;
+  items: string[];
+  variant?: 'sage' | 'clay' | 'sand';
+}
+const { heading, items, variant = 'sage' } = Astro.props;
+
+const styles = {
+  sage: 'bg-sage-50 border-sage-100',
+  clay: 'bg-clay-50 border-clay-100',
+  sand: 'bg-sand-100 border-sand-200',
+};
+const dot = {
+  sage: 'bg-sage-400',
+  clay: 'bg-clay-400',
+  sand: 'bg-sand-400',
+};
+---
+
+<div class:list={['border rounded-3xl p-8 reveal', styles[variant]]}>
+  <h2 class="font-serif text-2xl text-sage-800 mb-5">{heading}</h2>
+  <ul class="space-y-3">
+    {
+      items.map((t) => (
+        <li class="flex items-start gap-3 text-ink-700">
+          <span class:list={['mt-1.5 w-2 h-2 rounded-full flex-shrink-0', dot[variant]]} />
+          <span>{t}</span>
+        </li>
+      ))
+    }
+  </ul>
+</div>
