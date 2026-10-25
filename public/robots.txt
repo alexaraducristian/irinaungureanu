@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /404
 
-Sitemap: https://www.psihoterapeutcorinaungureanu.ro/sitemap-index.xml
+Sitemap: https://alexavolt.ro/irinaungureanu/sitemap-index.xml
