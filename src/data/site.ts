@@ -10,8 +10,31 @@ export const site = {
   email: 'contact@psihoterapeutcorinaungureanu.ro', // TODO: email real
   whatsapp: '40745000000', // TODO: număr WhatsApp real
   location: 'Iași, România',
+  city: 'Iași',
+  region: 'Iași',
+  country: 'RO',
+  // Coordonate aproximative centru Iași (pentru SEO local). Ajustează dacă dorești adresa exactă.
+  geo: { lat: 47.1585, lng: 27.6014 },
+  priceRange: '200–300 RON',
   reg: 'Colegiul Psihologilor din România · Cod RUP: 31423',
+  // Profiluri sociale (pentru schema.org sameAs). Completează cu linkurile reale.
+  social: [
+    // 'https://www.facebook.com/...',
+    // 'https://www.instagram.com/...',
+  ] as string[],
 };
+
+// Cuvinte-cheie globale, aplicate pe toate paginile. Paginile pot adăuga propriile keywords.
+export const globalKeywords = [
+  'psihoterapeut Iași',
+  'psiholog Iași',
+  'psihoterapie Iași',
+  'cabinet psihoterapie Iași',
+  'terapie Iași',
+  'terapie online',
+  'Corina Ungureanu psihoterapeut',
+  'ședințe psihoterapie Iași',
+];
 
 export const nav = {
   links: [

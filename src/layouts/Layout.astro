@@ -3,21 +3,36 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingContact from '../components/FloatingContact.astro';
-import { site } from '../data/site';
+import { site, globalKeywords } from '../data/site';
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
+  keywords?: string[];
   noindex?: boolean;
+  /** Dacă titlul este deja complet, nu mai adăuga sufixul de brand. */
+  rawTitle?: boolean;
 }
 
 const {
-  title = 'Psihoterapeut Corina Ungureanu | Iași & online',
-  description = 'Corina Ungureanu — psihoterapeut relațional în Iași și online. Terapie individuală, de cuplu și de familie, într-un spațiu cald, sigur și fără judecată.',
+  title = 'Psihoterapeut Iași — Corina Ungureanu | Terapie individuală, de cuplu și online',
+  description = 'Psihoterapeut în Iași și online. Corina Ungureanu oferă terapie individuală, de cuplu și de familie — un cabinet de psihoterapie cald, sigur și fără judecată. Programează o ședință.',
   image,
+  keywords = [],
   noindex = false,
+  rawTitle = false,
 } = Astro.props;
+
+// Titlu: dacă pagina nu dă un titlu "raw", adăugăm sufix cu brand + locație.
+const fullTitle = rawTitle
+  ? title
+  : title.includes('Iași') || title.includes('Corina Ungureanu')
+    ? title
+    : `${title} | Psihoterapeut Iași — Corina Ungureanu`;
+
+// Keywords: unim cele globale cu cele specifice paginii, eliminând duplicatele.
+const allKeywords = [...new Set([...keywords, ...globalKeywords])].join(', ');
 
 const canonicalPath = Astro.url.pathname.endsWith('/')
   ? Astro.url.pathname
@@ -33,17 +48,34 @@ const ogImage = image || new URL(`${base}og-default.svg`, Astro.site).href;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta name="keywords" content={allKeywords} />
+    <meta name="author" content="Corina Ungureanu" />
+    <meta
+      name="robots"
+      content={noindex
+        ? 'noindex, follow'
+        : 'index, follow, max-image-preview:large, max-snippet:-1'}
+    />
+    <meta name="language" content="Romanian" />
+
+    <!-- SEO local Iași -->
+    <meta name="geo.region" content="RO-IS" />
+    <meta name="geo.placename" content="Iași" />
+    <meta name="geo.position" content={`${site.geo.lat};${site.geo.lng}`} />
+    <meta name="ICBM" content={`${site.geo.lat}, ${site.geo.lng}`} />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL.href} />
-    <meta property="og:site_name" content="Corina Ungureanu — Psihoterapeut" />
+    <meta property="og:site_name" content="Corina Ungureanu — Psihoterapeut Iași" />
     <meta property="og:locale" content="ro_RO" />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Corina Ungureanu — psihoterapeut în Iași și online" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <link rel="canonical" href={canonicalURL.href} />
@@ -62,21 +94,67 @@ const ogImage = image || new URL(`${base}og-default.svg`, Astro.site).href;
       type="application/ld+json"
       set:html={JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'MedicalBusiness',
-        name: 'Corina Ungureanu — Psihoterapeut',
+        '@type': ['MedicalBusiness', 'Psychologist'],
+        '@id': new URL(base, Astro.site).href + '#business',
+        name: 'Corina Ungureanu — Psihoterapeut Iași',
+        alternateName: 'Cabinet psihoterapie Corina Ungureanu',
         description,
-        url: Astro.site?.href,
+        url: new URL(base, Astro.site).href,
+        image: ogImage,
         telephone: site.phone,
+        email: site.email,
+        priceRange: site.priceRange,
+        currenciesAccepted: 'RON',
         address: {
           '@type': 'PostalAddress',
-          addressLocality: 'Iași',
-          addressCountry: 'RO',
+          addressLocality: site.city,
+          addressRegion: site.region,
+          addressCountry: site.country,
         },
-        medicalSpecialty: 'Psychotherapy',
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: site.geo.lat,
+          longitude: site.geo.lng,
+        },
+        areaServed: [
+          { '@type': 'City', name: 'Iași' },
+          { '@type': 'Country', name: 'România' },
+          'online',
+        ],
+        medicalSpecialty: 'Psychiatric',
+        knowsAbout: [
+          'psihoterapie',
+          'terapie individuală',
+          'terapie de cuplu',
+          'terapie de familie',
+          'terapie online',
+          'anxietate',
+          'depresie',
+          'atacuri de panică',
+          'teoria atașamentului',
+          'traumă',
+        ],
+        knowsLanguage: ['ro'],
+        founder: {
+          '@type': 'Person',
+          name: 'Corina Ungureanu',
+          jobTitle: 'Psihoterapeut',
+          memberOf: {
+            '@type': 'Organization',
+            name: 'Colegiul Psihologilor din România',
+          },
+        },
+        availableService: [
+          { '@type': 'MedicalTherapy', name: 'Terapie individuală — Iași & online' },
+          { '@type': 'MedicalTherapy', name: 'Terapie de cuplu — Iași & online' },
+          { '@type': 'MedicalTherapy', name: 'Terapie de familie — Iași & online' },
+          { '@type': 'MedicalTherapy', name: 'Terapie online' },
+        ],
+        ...(site.social.length ? { sameAs: site.social } : {}),
       })}
     />
 
-    <title>{title}</title>
+    <title>{fullTitle}</title>
   </head>
   <body class="pb-16 md:pb-0">
     <a

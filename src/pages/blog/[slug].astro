@@ -19,9 +19,51 @@ const related = posts
   .slice(0, 2);
 const fallback = posts.filter((p) => p.slug !== post.slug).slice(0, 2);
 const suggestions = related.length ? related : fallback;
+
+// Keywords pentru articol: categoria + termeni generali relevanți.
+const postKeywords = [
+  post.category.toLowerCase(),
+  'psihoterapeut Iași',
+  'psihoterapie',
+  'blog psihologie',
+  'sănătate emoțională',
+];
+
+// URL absolut al imaginii de cover (pentru Open Graph) și al articolului.
+const ogImageUrl = new URL(post.cover.src, Astro.site).href;
+const articleUrl = new URL(`${base}/blog/${post.slug}/`, Astro.site).href;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  description: post.excerpt,
+  image: ogImageUrl,
+  datePublished: post.date,
+  dateModified: post.date,
+  articleSection: post.category,
+  inLanguage: 'ro',
+  mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+  author: {
+    '@type': 'Person',
+    name: 'Corina Ungureanu',
+    jobTitle: 'Psihoterapeut',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Corina Ungureanu — Psihoterapeut Iași',
+  },
+};
 ---
 
-<Layout title={`${post.title} | Blog Corina Ungureanu`} description={post.excerpt}>
+<Layout
+  title={`${post.title} | Blog psihoterapie — Corina Ungureanu`}
+  rawTitle={true}
+  description={post.excerpt}
+  keywords={postKeywords}
+  image={ogImageUrl}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <article>
     <div class="bg-sand-100 border-b border-sand-200">
       <div class="max-w-3xl mx-auto px-4 md:px-6 pt-12 pb-10">
