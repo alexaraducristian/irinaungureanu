@@ -41,25 +41,26 @@ care deține domeniul `alexavolt.ro`. Codul rămâne în acest repo separat.
 
 Cum funcționează:
 
-1. La fiecare push pe `main`, workflow-ul `.github/workflows/trigger-main-deploy.yml`
-   trimite un `repository_dispatch` către repo-ul principal.
-2. Workflow-ul de deploy al repo-ului principal face checkout la acest repo,
-   îl construiește și îl plasează sub `/irinaungureanu/` în artefactul GitHub Pages.
+- Workflow-ul de deploy al repo-ului principal face checkout la acest repo,
+  îl construiește și îl plasează sub `/irinaungureanu/` în artefactul GitHub Pages.
+- Acest repo **nu se publică singur** (nu are workflow propriu de deploy).
 
-### Configurare (o singură dată)
+### Cum publici modificările (deploy manual)
 
-Workflow-ul de trigger are nevoie de un token pentru a notifica repo-ul principal:
+Acest repo nu declanșează automat deploy-ul. După ce faci push aici, pornește
+manual deploy-ul din repo-ul principal:
 
-1. Creează un **Fine-grained Personal Access Token** cu acces la repo-ul
-   `alexaraducristian/alexaraducristian.github.io`, permisiunea
-   **Contents: Read and write** (necesară pentru `repository_dispatch`).
-2. În acest repo: **Settings → Secrets and variables → Actions → New repository secret**
-   - Name: `MAIN_SITE_DISPATCH_TOKEN`
-   - Value: token-ul generat.
+**`alexaraducristian.github.io` → Actions → „Deploy to GitHub Pages” → Run workflow**
 
-> Dacă secretul lipsește, workflow-ul de trigger va eșua cu un mesaj explicit.
-> Poți oricând porni manual deploy-ul din repo-ul principal
-> (**Actions → Deploy to GitHub Pages → Run workflow**).
+Workflow-ul principal preia automat ultima versiune din `main`-ul acestui repo,
+o construiește și o publică sub `/irinaungureanu/`.
+
+> Setări GitHub Pages:
+> - În repo-ul principal: **Settings → Pages → Source = GitHub Actions**, cu
+>   domeniul `alexavolt.ro`.
+> - În acest repo (`irinaungureanu`): **Source = GitHub Actions** (fără deploy
+>   propriu), ca să nu ruleze Jekyll. Fișierul `.nojekyll` previne oricum rularea
+>   Jekyll.
 
 ### Dezvoltare locală la subcale
 
