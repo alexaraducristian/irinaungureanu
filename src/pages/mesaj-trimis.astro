@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout
+  title="Mesaj trimis — mulțumesc | Corina Ungureanu"
+  description="Mesajul tău a fost trimis cu succes. Îți voi răspunde cât de curând."
+  noindex={true}
+>
+  <section class="px-4 md:px-6 py-28 text-center">
+    <div
+      class="w-16 h-16 mx-auto rounded-full bg-sage-100 text-sage-600 flex items-center justify-center text-3xl mb-6"
+    >
+      ✓
+    </div>
+    <h1 class="font-serif text-3xl md:text-4xl text-sage-800 mb-4">
+      Îți mulțumesc pentru mesaj
+    </h1>
+    <p class="text-ink-500 max-w-md mx-auto mb-8">
+      Mesajul tău a ajuns la mine. Îți voi răspunde cât de curând pot. Până
+      atunci, ai grijă de tine.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a
+        href={`${base}/`}
+        class="inline-flex items-center justify-center gap-2 bg-sage-600 hover:bg-sage-700 text-white px-7 py-3.5 rounded-full font-bold transition-colors shadow"
+      >
+        Înapoi acasă
+      </a>
+      <a
+        href={`${base}/blog/`}
+        class="inline-flex items-center justify-center gap-2 bg-white text-sage-800 px-7 py-3.5 rounded-full font-bold hover:bg-sage-50 transition-colors border border-sand-200"
+      >
+        Citește articolele
+      </a>
+    </div>
+  </section>
+</Layout>

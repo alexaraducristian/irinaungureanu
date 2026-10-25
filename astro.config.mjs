@@ -10,7 +10,7 @@ export default defineConfig({
 
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/404'),
+      filter: (page) => !page.includes('/404') && !page.includes('/mesaj-trimis'),
       serialize(item) {
         item.lastmod = new Date().toISOString();
         return item;

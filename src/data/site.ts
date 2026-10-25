@@ -5,10 +5,10 @@ export const site = {
   name: 'Corina Ungureanu',
   role: 'Psihoterapeut relațional',
   tagline: 'Psihoterapie individuală, de cuplu și de familie — Iași & online',
-  phone: '+40745000000', // TODO: înlocuiește cu numărul real
-  phoneDisplay: '0745 000 000',
-  email: 'contact@psihoterapeutcorinaungureanu.ro', // TODO: email real
-  whatsapp: '40745000000', // TODO: număr WhatsApp real
+  phone: '+40745188986',
+  phoneDisplay: '0745 188 986',
+  email: 'ungureanuioanacorina@gmail.com',
+  whatsapp: '40745188986',
   location: 'Iași, România',
   city: 'Iași',
   region: 'Iași',

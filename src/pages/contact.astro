@@ -2,6 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import { site } from '../data/site';
+
+// Pagina de confirmare afișată după trimiterea formularului (FormSubmit `_next`).
+const contactSuccessUrl = new URL(
+  `${import.meta.env.BASE_URL.replace(/\/$/, '')}/mesaj-trimis/`,
+  Astro.site
+).href;
 ---
 
 <Layout
@@ -84,11 +90,18 @@ import { site } from '../data/site';
             ce îmi scrii nu te obligă la ceva — este doar un prim pas.
           </p>
           <form
-            action={`mailto:${site.email}`}
-            method="post"
-            enctype="text/plain"
+            action={`https://formsubmit.co/${site.email}`}
+            method="POST"
             class="space-y-4"
           >
+            <!-- Setări FormSubmit -->
+            <input type="hidden" name="_subject" value="Mesaj nou de pe site — psihoterapie" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="true" />
+            <input type="hidden" name="_next" value={contactSuccessUrl} />
+            <!-- Honeypot anti-spam (ascuns pentru oameni, completat de boți) -->
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
             <div>
               <label for="nume" class="block text-sm font-semibold text-sage-800 mb-1">Nume</label>
               <input
@@ -100,12 +113,22 @@ import { site } from '../data/site';
               />
             </div>
             <div>
-              <label for="contact" class="block text-sm font-semibold text-sage-800 mb-1">Email sau telefon</label>
+              <label for="email" class="block text-sm font-semibold text-sage-800 mb-1">Email</label>
               <input
-                id="contact"
-                name="contact"
-                type="text"
+                id="email"
+                name="email"
+                type="email"
                 required
+                placeholder="adresa ta de email"
+                class="w-full rounded-xl border border-sand-200 bg-white px-4 py-3 text-ink-700 focus:outline-none focus:border-sage-400 focus:ring-2 focus:ring-sage-100"
+              />
+            </div>
+            <div>
+              <label for="telefon" class="block text-sm font-semibold text-sage-800 mb-1">Telefon <span class="font-normal text-ink-500">(opțional)</span></label>
+              <input
+                id="telefon"
+                name="telefon"
+                type="tel"
                 class="w-full rounded-xl border border-sand-200 bg-white px-4 py-3 text-ink-700 focus:outline-none focus:border-sage-400 focus:ring-2 focus:ring-sage-100"
               />
             </div>
@@ -115,6 +138,7 @@ import { site } from '../data/site';
                 id="mesaj"
                 name="mesaj"
                 rows="4"
+                required
                 class="w-full rounded-xl border border-sand-200 bg-white px-4 py-3 text-ink-700 focus:outline-none focus:border-sage-400 focus:ring-2 focus:ring-sage-100"
               ></textarea>
             </div>
@@ -124,6 +148,9 @@ import { site } from '../data/site';
             >
               Trimite mesajul
             </button>
+            <p class="text-xs text-ink-500 text-center">
+              Mesajul ajunge direct pe emailul meu. Îți răspund cât de curând.
+            </p>
           </form>
         </div>
       </div>
