@@ -13,11 +13,12 @@ export const site = {
   city: 'Iași',
   region: 'Iași',
   country: 'RO',
-  // Coordonate aproximative centru Iași (pentru SEO local). Ajustează dacă dorești adresa exactă.
+  // Opțional: coordonate aproximative (centru Iași) pentru SEO local.
+  // Poți pune coordonatele exacte ale cabinetului dacă dorești.
   geo: { lat: 47.1585, lng: 27.6014 },
   priceRange: '200–300 RON',
   reg: 'Colegiul Psihologilor din România · Cod RUP: 31423',
-  // Profiluri sociale (pentru schema.org sameAs). Completează cu linkurile reale.
+  // Opțional: adaugă linkurile reale de social media (apar în schema.org sameAs).
   social: [
     // 'https://www.facebook.com/...',
     // 'https://www.instagram.com/...',
